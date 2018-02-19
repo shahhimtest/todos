@@ -25,9 +25,9 @@
   </section>
   <footer *ngIf="!!allTodo.length">
     <ul class="filters">
-      <li><a [routerLink]="['/todos', {filter: 'all'}]" [class.selected]="'all'==curFilter">all</a></li>
-      <li><a [routerLink]="['/todos', {filter: 'active'}]" [class.selected]="'active'==curFilter">active</a></li>      
-      <li><a [routerLink]="['/todos', {filter: 'completed'}]" [class.selected]="'completed'==curFilter">completed</a></li>
+      <li><a routerLink="" [queryParams]="{filter:'all'}" routerLinkActive="selected">all</a></li>
+      <li><a routerLink="" [queryParams]="{filter:'active'}" routerLinkActive="selected">active</a></li>      
+      <li><a routerLink="" [queryParams]="{filter:'completed'}" routerLinkActive="selected">completed</a></li>
     </ul>
     <span class="todo-count">
       <strong>{{activeTodos.length}}</strong>{{activeTodos.length===1? "item":"items"}} left

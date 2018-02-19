@@ -5,7 +5,6 @@ import { TodoListComponent } from "./todo/todo-list.component";
 import { PageNotNotFoundComponent } from "./page-not-not-found.component"
 
 const routes: Routes = [
-    { path: "", redirectTo: "todos", pathMatch: "full" },
     { path: "**", component: PageNotNotFoundComponent }
 ]
 @NgModule({

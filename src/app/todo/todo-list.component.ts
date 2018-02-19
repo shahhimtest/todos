@@ -11,7 +11,6 @@ import { Todo } from './todo';
 export class TodoListComponent implements OnInit {
 
   curTodos: Array<Todo>;
-  curFilter: string;
   newTodoText: string;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,10 +19,9 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.newTodoText = "";
-    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-      this.curTodos = this.allTodo;
+    this.activatedRoute.queryParamMap.subscribe((params: ParamMap) => {
+      this.curTodos = this.allTodo || [];
       let filter: string = params.get("filter") || "";
-      this.curFilter = filter;
       filter.trim() == "completed" && (this.curTodos = this.completedTodos);
       filter.trim() == "active" && (this.curTodos = this.activeTodos);
       filter.trim() == "all" && (this.curTodos = this.allTodo);
