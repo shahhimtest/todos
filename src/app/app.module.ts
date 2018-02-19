@@ -1,18 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from "@angular/forms";
+import { AppRoutingModule } from "./app-routing.module";
+import { TodoModule } from "./todo/todo.module";
+import { TodoRoutingModule } from "./todo/todo-routing.module";
 
 import { AppComponent } from './app.component';
-
+import { PageNotNotFoundComponent } from "./page-not-not-found.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotNotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    TodoRoutingModule,
+    AppRoutingModule,
+    TodoModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
