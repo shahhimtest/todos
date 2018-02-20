@@ -10,7 +10,7 @@ import { Todo } from './todo';
 })
 export class TodoListComponent implements OnInit {
 
-  curTodos: Array<Todo>;
+  filter: string;
   newTodoText: string;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,14 +20,16 @@ export class TodoListComponent implements OnInit {
   ngOnInit() {
     this.newTodoText = "";
     this.activatedRoute.queryParamMap.subscribe((params: ParamMap) => {
-      this.curTodos = this.allTodo || [];
-      let filter: string = params.get("filter") || "";
-      filter.trim() == "completed" && (this.curTodos = this.completedTodos);
-      filter.trim() == "active" && (this.curTodos = this.activeTodos);
-      filter.trim() == "all" && (this.curTodos = this.allTodo);
+      this.filter = (params.get("filter") || "all").trim();
     })
   }
-
+  get curTodos() {
+    let todos: Array<Todo>;
+    this.filter == "all" && (todos = this.allTodo);
+    this.filter == "active" && (todos = this.activeTodos);
+    this.filter == "completed" && (todos = this.completedTodos);
+    return todos;
+  }
   get allTodo() {
     return this.todoService.todos;
   }
